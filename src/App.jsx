@@ -1,21 +1,24 @@
 import 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import '../server';
+
 import Home from './pages/Home';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 import Vans from './pages/Vans/Vans';
-import '../server';
 import VanDetail from './pages/Vans/VanDetail';
-import Layout from './components/Layout';
-import HostLayout from './components/HostLayout';
 import Dashboard from './pages/Host/Dashboard';
 import Income from './pages/Host/Income';
+import Reviews from './pages/Host/Reviews';
 import HostVans from './pages/Host/HostVans';
 import HostVanDetail from './pages/Host/HostVanDetail';
 import HostVanInfo from './pages/Host/HostVanInfo';
 import HostVanPricing from './pages/Host/HostVanPricing';
 import HostVanPhotos from './pages/Host/HostVanPhotos';
 
-import Reviews from './pages/Host/Reviews';
+import Layout from './components/Layout';
+import HostLayout from './components/HostLayout';
 
 function App() {
   return (
@@ -39,6 +42,8 @@ function App() {
 
             <Route path="reviews" element={<Reviews />} />
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

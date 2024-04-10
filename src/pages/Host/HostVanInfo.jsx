@@ -10,7 +10,7 @@ export default function HostVanInfo() {
         Name: <span>{currentVan.name}</span>
       </p>
       <p>
-        Type: <span>{currentVan.type}</span>
+        Type: <span>{`${currentVan.type[0].toUpperCase()}${currentVan.type.slice(1)}`}</span>
       </p>
       <p>
         Description: <span>{currentVan.description}</span>
