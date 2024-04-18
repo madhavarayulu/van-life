@@ -1,18 +1,16 @@
-import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useSearchParams, useLoaderData } from 'react-router-dom';
+import { getVans } from '../../../api';
+
+export function loader() {
+  return getVans();
+}
 
 export default function Vans() {
-  const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    fetch('/api/vans')
-      .then((res) => res.json())
-      .then((data) => {
-        setVans(data.vans);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null);
+  const vans = useLoaderData();
 
   const typeFilter = searchParams.get('type');
   const displayedVans = typeFilter
@@ -37,6 +35,10 @@ export default function Vans() {
       </Link>
     </div>
   ));
+
+  if (error) {
+    return <h1 aria-live="assertive">There was an error: {error}</h1>;
+  }
 
   return (
     <div className="van-list-container">
