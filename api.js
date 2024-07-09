@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCxYKSJuOErbwPQmJDIP91fsTVA3eiNv_c',
+  apiKey: process.env.FIREBASE_APIKEY,
   authDomain: 'vanlife-4051b.firebaseapp.com',
   projectId: 'vanlife-4051b',
   storageBucket: 'vanlife-4051b.appspot.com',
